@@ -1,10 +1,10 @@
+import datetime
 import json
 import os
-import datetime
 
+import dotenv
 import falcon
 import falcon.http_error
-import dotenv
 import peewee
 
 import game_lists_server.model as model
@@ -49,7 +49,7 @@ class Search:
                     'id': game.id,
                     'imageUrl': game.image_url,
                     'name': game.name,
-                    'originalReleaseDate': game.original_release_date.isoformat(),
+                    'originalReleaseDate': game.original_release_date.isoformat() if game.original_release_date else None,
                 })
             resp.text = json.dumps(content)
             resp.status = falcon.HTTP_200
