@@ -7,9 +7,11 @@ class BaseModel(P.Model):
 
 
 class Game(BaseModel):
+    aliases = P.TextField()
     date_added = P.DateTimeField()
     date_last_updated = P.DateTimeField()
     deck = P.TextField()
+    description = P.TextField()
     guid = P.TextField()
     image_url = P.TextField()
     name = P.TextField()
@@ -34,7 +36,3 @@ class Game(BaseModel):
 
 # class Release(BaseModel):
 #     pass
-
-
-# Game.create_table()
-# Game.create(id=444)
