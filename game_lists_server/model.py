@@ -7,32 +7,42 @@ class BaseModel(P.Model):
 
 
 class Game(BaseModel):
-    aliases = P.TextField()
-    date_added = P.DateTimeField()
-    date_last_updated = P.DateTimeField()
-    deck = P.TextField()
-    description = P.TextField()
     guid = P.TextField()
-    image_url = P.TextField()
+    date_last_updated = P.DateTimeField()
     name = P.TextField()
-    original_release_date = P.DateField(null=True)
+    image_url = P.TextField()
+    description = P.TextField()
+    release_date = P.DateField(null=True)
 
 
-# class Developer(BaseModel):
-#     pass
+class Developer(BaseModel):
+    name = P.TextField()
+    country = P.TextField()
 
 
-# class Franchise(BaseModel):
-#     pass
+class Franchise(BaseModel):
+    name = P.TextField()
 
 
-# class Genre(BaseModel):
-#     pass
+class Genre(BaseModel):
+    name = P.TextField()
 
 
-# class Platform(BaseModel):
-#     pass
+class Platform(BaseModel):
+    name = P.TextField()
+    abbreviation = P.TextField()
 
 
-# class Release(BaseModel):
-#     pass
+class GameDeveloper(BaseModel):
+    game = P.ForeignKeyField(Game)
+    developer = P.ForeignKeyField(Developer)
+
+
+class GameFranchise(BaseModel):
+    game = P.ForeignKeyField(Game)
+    franchise = P.ForeignKeyField(Franchise)
+
+
+class GameGenre(BaseModel):
+    game = P.ForeignKeyField(Game)
+    genre = P.ForeignKeyField(Genre)
