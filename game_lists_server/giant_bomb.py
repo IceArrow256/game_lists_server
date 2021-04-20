@@ -16,12 +16,12 @@ class GiantBomb:
     def __init__(self, api_key):
         self._api_key = api_key
 
-    def get_company(self, guid):
+    def get_company(self, id: int):
         """
         Keyword arguments:
         guid -- for use in single item api call for company
         """
-        return Responses(self._get(f'https://www.giantbomb.com/api/company/{guid}/').json())
+        return Responses(self._get(f'https://www.giantbomb.com/api/company/3010-{id}/').json())
 
     def get_companies(self):
         """
@@ -42,12 +42,12 @@ class GiantBomb:
         """
         return Responses(self._get(f'https://www.giantbomb.com/api/game/').json())
 
-    def get_game(self, guid):
+    def get_game(self, id):
         """
         Keyword arguments:
         guid -- for use in single item api call for game
         """
-        return Responses(self._get(f'https://www.giantbomb.com/api/game/{guid}/').json())
+        return Responses(self._get(f'https://www.giantbomb.com/api/game/3030-{id}/').json())
 
     def get_games(self):
         """
