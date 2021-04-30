@@ -4,14 +4,27 @@ Server for interaction between [Game List](https://github.com/IceArrow256/game_l
 
 ## Usage
 
+### Linux
 ```
 $ git clone https://github.com/IceArrow256/game_lists_server.git
 $ cd game_lists_server
-$ py -m venv game_lists_server
+$ python -m venv game_lists_server
 $ source bin/activate
 $ pip install -r requirements.txt
 $ cp .env.example .env
 $ gunicorn game_lists_server.__main__:app --reload -b 0.0.0.0:8000
+or
+$ python -m game_lists_server
+```
+### Windows
+```
+$ git clone https://github.com/IceArrow256/game_lists_server.git
+$ cd game_lists_server
+$ python -m venv game_lists_server
+$ script\activate
+$ pip install -r requirements.txt
+$ copy .env.example .env
+$ python -m game_lists_server
 ```
 
 Make sure that you placed valid [Giant Bomb API Key](https://www.giantbomb.com/api/) in .env file.
