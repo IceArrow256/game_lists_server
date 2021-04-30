@@ -8,7 +8,8 @@ class BaseModel(P.Model):
 
 class Game(BaseModel):
     id = P.AutoField()
-    date_last_updated = P.DateTimeField()
+    date_last_updated = P.DateTimeField(null=True)
+    # if date_last_updated is null then developers, franchises, genres for this game not exist
     name = P.TextField()
     image_url = P.TextField()
     description = P.TextField(null=True)
@@ -37,19 +38,24 @@ class Platform(BaseModel):
     name = P.TextField()
     abbreviation = P.TextField()
 
+
 class Log(BaseModel):
-    name = P.TextField(unique=True)
+    query = P.TextField(unique=True)
     date_last_updated = P.DateTimeField()
+
 
 class LogId(BaseModel):
     log = P.ForeignKeyField(Log, on_delete='CASCADE')
     game_id = P.IntegerField()
+
     class Meta:
         primary_key = P.CompositeKey('log', 'game_id')
+
 
 class GameDeveloper(BaseModel):
     game = P.ForeignKeyField(Game, on_delete='CASCADE')
     developer = P.ForeignKeyField(Developer, on_delete='CASCADE')
+
     class Meta:
         primary_key = P.CompositeKey('game', 'developer')
 
@@ -57,6 +63,7 @@ class GameDeveloper(BaseModel):
 class GameFranchise(BaseModel):
     game = P.ForeignKeyField(Game, on_delete='CASCADE')
     franchise = P.ForeignKeyField(Franchise, on_delete='CASCADE')
+
     class Meta:
         primary_key = P.CompositeKey('game', 'franchise')
 
@@ -64,11 +71,14 @@ class GameFranchise(BaseModel):
 class GameGenre(BaseModel):
     game = P.ForeignKeyField(Game, on_delete='CASCADE')
     genre = P.ForeignKeyField(Genre, on_delete='CASCADE')
+
     class Meta:
         primary_key = P.CompositeKey('game', 'genre')
+
 
 class GamePlatform(BaseModel):
     game = P.ForeignKeyField(Game, on_delete='CASCADE')
     platform = P.ForeignKeyField(Platform, on_delete='CASCADE')
+
     class Meta:
         primary_key = P.CompositeKey('game', 'platform')

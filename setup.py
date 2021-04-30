@@ -7,7 +7,7 @@ setup(
     author_email="icearrow256@gmail.com",
     url="https://github.com/IceArrow256/game_lists_server",
     description="Server side for game_lists app",
-    version="0.0.4",
+    version="0.0.5",
     packages=find_packages(),
     install_requires=[
         "setuptools>=45.0",

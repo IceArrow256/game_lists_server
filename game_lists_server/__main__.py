@@ -8,10 +8,10 @@ import game_lists_server.controller as controller
 
 app = application = falcon.App()
 search = controller.Search()
-games = controller.Games()
 game = controller.Game()
-app.add_route('/games', games)
-app.add_route('/game/{guid}', game)
+search = controller.Search()
+app.add_route('/game/{id}', game)
+app.add_route('/search', search)
 
 if __name__ == '__main__':
     with wsgiref.simple_server.make_server('', 8000, app) as httpd:
