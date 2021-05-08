@@ -9,7 +9,7 @@ Server for interaction between [Game List](https://github.com/IceArrow256/game_l
 $ git clone https://github.com/IceArrow256/game_lists_server.git
 $ cd game_lists_server
 $ python -m venv game_lists_server
-$ source bin/activate
+$ source game_lists_server/bin/activate
 $ pip install -r requirements.txt
 $ cp .env.example .env
 $ gunicorn game_lists_server.__main__:app --reload -b 0.0.0.0:8000
@@ -21,13 +21,13 @@ $ python -m game_lists_server
 $ git clone https://github.com/IceArrow256/game_lists_server.git
 $ cd game_lists_server
 $ python -m venv game_lists_server
-$ script\activate
+$ game_lists_server\Scripts\[activate|activate.bat|Activate.ps1]
 $ pip install -r requirements.txt
 $ copy .env.example .env
 $ python -m game_lists_server
 ```
 
-Make sure that you placed valid [Giant Bomb API Key](https://www.giantbomb.com/api/) in .env file.
+Make sure that you placed valid [Giant Bomb API Key](https://www.giantbomb.com/api/) in the .env file.
 
 Server has 2 type of requests:
 - Search request /search?query=%name%
